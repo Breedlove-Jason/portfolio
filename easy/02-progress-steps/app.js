@@ -7,7 +7,6 @@ let currentActive = 1;
 next.addEventListener('click', () => {
     currentActive++;
 
-    prev.classList.remove('disabled');
     if(currentActive > circles.length) {
         currentActive = circles.length;
     }
@@ -37,4 +36,12 @@ function update(){
 
     // Corrected formula: (active circles - 1) / (total circles - 1) * 100
     progress.style.width = `${(actives.length - 1) / (circles.length - 1) * 100}%`;
+    if(currentActive === 1) {
+        prev.disabled = true;
+    }else if(currentActive === circles.length) {
+        next.disabled= true;
+    }else{
+        prev.disabled = false;
+        next.disabled = false;
+    }
 }
